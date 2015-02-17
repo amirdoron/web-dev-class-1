@@ -1,24 +1,6 @@
 
 console.log("hello world");
 
-// a way to create a js object
-// This is a hard-coded object instance.
-// In case we'll need another instance with different value in its data members
-// we'll need to use copy paste (not so good)
-var shirhanPerson =
-{
-	// data members
-	Id : 4321,
-	Name : "Shirhan the Tiger",
-	Gender : "Male",
-
-	// method
-	ToString : function ()
-	{
-		return "Person ID " + this.Id + " Name " + this.Name + " Gender " + this.Gender;
-	}
-};
-
 // Alternative for the above.
 // Class like example.
 // A Person type that requires 3 parameters during creation
@@ -38,8 +20,31 @@ function Person(id, name, gender)
   }
 }
 
-var p1 = new Person(1, "person 1", "Male");
-var p2 = new Person(2, "person 2", "Female");
+// load express external lib
+var express = require('express');
 
-console.log("Person p1 " + p1.ToString());
-console.log("Person p1 " + p2.ToString());
+// construct an express object
+var app = express();
+
+// define a REST route for getting a Person
+// to access this route you can call from web-browser to http://localhost:8000
+app.get('/', function (req, res)
+{
+	// instantiate a Person object
+	var rogerRabitPerson = new Person(1234, "Roger Rabit", "Male");
+
+	// use Person method
+	console.log("sending " + rogerRabitPerson.ToString());
+
+	// sending a javascript object is automatically serialized to a JSON
+	res.send(rogerRabitPerson);
+});
+
+// starting the server
+var server = app.listen(8000, function () {
+
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log('Example app listening at http://%s:%s', host, port);
+});
