@@ -10,14 +10,14 @@ module.exports = function(app)
 	function Person(id, name, gender)
 	{
 		// Person's data members
-		this.mId = id;
-		this.mName = name;
-		this.mGender = gender;
+		this.Id = id;
+		this.Name = name;
+		this.Gender = gender;
 
 		// Person's method
 		this.ToString = function ()
 		{
-			return "Person ID " + this.mId + " Name " + this.mName + " Gender " + this.mGender;
+			return "Person ID " + this.Id + " Name " + this.Name + " Gender " + this.Gender;
 		}
 	}
 
@@ -43,7 +43,7 @@ module.exports = function(app)
 		// create a list of Persons with ID that match the requested id
 		// consider moving such logic to an object that represents PersonDB e.g. PersonDAL
 		var foundPersons = personDB.filter(function(p){
-			return p.mId == req.params.id;
+			return p.Id == req.params.id;
 		});
 
 		if(foundPersons[0] != null)
