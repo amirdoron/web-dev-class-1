@@ -60,6 +60,15 @@ module.exports = function(app)
 		}
 	});
 
+	// define person REST API to add a new person into the DB
+	app.post('/person/add', function(req, res)
+	{
+		var newPerson = new Person(req.body.Id, req.body.Name, req.body.Gender);
+		console.log("adding new Person " + newPerson.ToString() );
+		personDB.push(newPerson);
+		res.send(200);
+	});
+
 	// return an object that contains the public API related to this service
 	return {
 		// Each method may access other data members and functions that are
