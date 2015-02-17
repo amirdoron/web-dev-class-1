@@ -5,9 +5,12 @@ function InitServer()
 {
 	// load express external lib
 	var express = require('express');
-
 	// construct an express object
 	var app = express();
+
+	// serve client static files
+	//var serveStatic = require('serve-static');
+	//app.use(serveStatic('../app/client/app/', {'index': ['default.html', 'default.htm']}));
 
 	// starting the server
 	var server = app.listen(8000, function () {
@@ -22,5 +25,6 @@ function InitServer()
 }
 
 var app = InitServer();
+
 var personService = require('./personService.js');
 var service = personService(app);
