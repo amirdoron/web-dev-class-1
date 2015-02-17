@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/app/client/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/js_basics/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/js_basics/.npm-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/js_basics/server/.npm-cache" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
