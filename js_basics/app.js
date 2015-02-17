@@ -27,8 +27,8 @@ var express = require('express');
 var app = express();
 
 // define a REST route for getting a Person
-// to access this route you can call from web-browser to http://localhost:8000
-app.get('/', function (req, res)
+// to access this route you can call from web-browser to http://localhost:8000/person/get
+app.get('/person/get', function (req, res)
 {
 	// instantiate a Person object
 	var rogerRabitPerson = new Person(1234, "Roger Rabit", "Male");
