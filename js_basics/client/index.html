@@ -25,7 +25,10 @@
 				" name " + person.Name +
 				" Gender " + person.Gender;
 
-				$('#person-result').html(personResult);
+				window.setTimeout(function()
+				{
+					$('#person-result').html(personResult);
+				}, 3000);
 			}
 		});
 	</script>
