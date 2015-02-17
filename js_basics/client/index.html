@@ -15,7 +15,7 @@
 
 	<!-- embedded javascript logic inside HTML -->
 	<script>
-		<!-- using JQuery ajax to communication with the web server -->
+		// use JQuery ajax to get data from person web-service
 		$.ajax({
 			url: "/person/get/1",
 			cache: false,
@@ -25,19 +25,22 @@
 				" name " + person.Name +
 				" Gender " + person.Gender;
 
+				// using browser built in timeout capability
 				window.setTimeout(function()
 				{
+					// use JQuery capability to modify HTML tags according to tag's id
 					$('#person-result').html(personResult);
 				}, 3000);
 			}
 		});
 
+    // create Person object instance
 		var newPerson = {
 			Id: 2211,
 			Name: "Stark the king of the north",
 			Gender: "Male"
 		};
-
+    // send Person object to person web-service
 		$.ajax({
 			url: '/person/add',
 			type: 'post',
