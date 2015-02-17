@@ -8,6 +8,8 @@
 
 	<div>This client application is going to use Person web-service we just created ...</div>
 
+	<span id="person-result">displaying ...</span>
+
 	<!-- this is how we are loading external javascript dependency -->
 	<script src="lib/jquery-1.10.2.js"></script>
 
@@ -17,10 +19,13 @@
 		$.ajax({
 			url: "/person/get/1",
 			cache: false,
-			success: function(person){
-				console.log("Person id " + person.Id +
+			success: function(person)
+			{
+				var personResult = "Person id " + person.Id +
 				" name " + person.Name +
-				" Gender " + person.Gender)
+				" Gender " + person.Gender;
+
+				$('#person-result').html(personResult);
 			}
 		});
 	</script>
