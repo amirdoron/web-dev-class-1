@@ -3,23 +3,20 @@ console.log("hello world");
 
 function InitServer()
 {
-	// load express external lib
+	// load external libs
 	var express = require('express');
+	var bodyParser = require('body-parser');
+
 	// construct an express object
 	var app = express();
 
-	// serve client static files
-	//var serveStatic = require('serve-static');
-	//app.use(serveStatic('../app/client/app/', {'index': ['default.html', 'default.htm']}));
+	// instruct the server to serve client's static files from ./client directory
+	app.use(express.static(__dirname + '/client'));
+	app.use(bodyParser.json());
 
 	// starting the server
-	var server = app.listen(8000, function () {
-
-		var host = server.address().address;
-		var port = server.address().port;
-
-		console.log('Example app listening at http://%s:%s', host, port);
-	});
+	app.listen(8000);
+	console.log("server listen on port 8000")
 
 	return app;
 }
