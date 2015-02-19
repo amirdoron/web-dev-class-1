@@ -7,18 +7,20 @@
 			// your code goes here
 // })();
 
-(function(globalSpace, ObjectDm) // ObjectDm is know become an external dependency
+(function(globalSpace, ObjectDm, $) // ObjectDm is know become an external dependency
 {
 	"use strict";
 
-	console.log("load start person.js");
+	// expose public API by injecting new object (PersonService) to the global namespace.
+	var exportPersonService = {}; // define new object to contain the public API
+	globalSpace.PersonService = exportPersonService; // insert new namespace in the global one
 
 	// create new person DM to bind between HTML view and this javascript controller
 	var personDm = new ObjectDm( "person" );
 	// set some initial value for the person ID (up to this point the default value was set on the HTML)
 	personDm.set("id", 1);
 
-	function getPersonById()
+	exportPersonService.GetById = function()
 	{
 		// To cancel direct dependency between this controller and HTML tag's ID defined in the view
 		// to allow fetching the person ID, we can use MVC instead ...
@@ -44,6 +46,22 @@
 		});
 	}
 
+	exportPersonService.GetAll = function()
+	{
+		$.ajax({
+			url: "/person/get",
+			cache: false,
+			success: function(persons)
+			{
+				console.log("Persons");
+				persons.forEach(function(p)
+				{
+					console.log("ID: " + p.Id + " Name: " + p.Name + " Gender: " + p.Gender);
+				});
+			}
+		})
+	}
+
 	var newPerson = {
 		Id: 2211,
 		Name: "Stark the king of the north",
@@ -58,11 +76,4 @@
 		dataType: 'json'
 	});
 
-	// expose public API by injecting new object (PersonService) to the global namespace.
-	var exportPersonService = {}; // define new object to contain the public API
-	exportPersonService.GetById = getPersonById; // expose specific method
-	globalSpace.PersonService = exportPersonService; // insert new namespace in the global one
-
-	console.log("load end person.js");
-
-})(window, ObjectDm);
+})(window, ObjectDm, jQuery);
