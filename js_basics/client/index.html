@@ -17,45 +17,8 @@
 
 	<!-- this is how we are loading external javascript dependency -->
 	<script src="lib/jquery-1.10.2.js"></script>
-
-	<!-- embedded javascript logic inside HTML -->
-	<script>
-		// function that is called on button click event
-		function getPersonById()
-		{
-      // fetch user input person ID from the text box
-			var id = $('#personId').val();
-			// use JQuery ajax to get data from person web-service
-			$.ajax({
-				url: "/person/get/"+id,
-				cache: false,
-				success: function(person)
-				{
-					var personResult = "Person id " + person.Id +
-						" name " + person.Name +
-						" Gender " + person.Gender;
-
-						// use JQuery capability to modify HTML tags according to tag's id
-						$('#person-result').html(personResult);
-				}
-			});
-		}
-
-    // create Person object instance
-		var newPerson = {
-			Id: 2211,
-			Name: "Stark the king of the north",
-			Gender: "Male"
-		};
-    // send Person object to person web-service
-		$.ajax({
-			url: '/person/add',
-			type: 'post',
-			data: JSON.stringify(newPerson),
-			contentType: 'application/json',
-			dataType: 'json'
-		});
-	</script>
+	<!-- note that you must load js files according to the inter-dependencies between them!-->
+	<script src="person.js"></script>
 
 </body>
 
