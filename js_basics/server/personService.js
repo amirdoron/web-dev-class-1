@@ -60,6 +60,12 @@ module.exports = function(app)
 		}
 	});
 
+	// REST API to retrieve all persons in one shot
+	app.get('/person/get', function(req, res)
+	{
+		res.send(personDB);
+	});
+
 	// define person REST API to add a new person into the DB
 	app.post('/person/add', function(req, res)
 	{
