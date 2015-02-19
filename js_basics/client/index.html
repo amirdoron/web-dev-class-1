@@ -6,33 +6,40 @@
 
 <body>
 
-	<div>This client application is going to use Person web-service we just created ...</div>
+	<p>Insert person ID you want to retrieve</p>
 
-	<span id="person-result">displaying ...</span>
+	<!-- text box to retrieve user input with person ID default value -->
+	<input type="text" id="personId" value="1">
+	<!-- button to trigger person fetch procedure -->
+	<button type="button" onclick="getPersonById()">Get Person</button>
+	<br>
+	<div id="person-result">click Get Person to retrieve person's data ...</div>
 
 	<!-- this is how we are loading external javascript dependency -->
 	<script src="lib/jquery-1.10.2.js"></script>
 
 	<!-- embedded javascript logic inside HTML -->
 	<script>
-		// use JQuery ajax to get data from person web-service
-		$.ajax({
-			url: "/person/get/1",
-			cache: false,
-			success: function(person)
-			{
-				var personResult = "Person id " + person.Id +
-				" name " + person.Name +
-				" Gender " + person.Gender;
-
-				// using browser built in timeout capability
-				window.setTimeout(function()
+		// function that is called on button click event
+		function getPersonById()
+		{
+      // fetch user input person ID from the text box
+			var id = $('#personId').val();
+			// use JQuery ajax to get data from person web-service
+			$.ajax({
+				url: "/person/get/"+id,
+				cache: false,
+				success: function(person)
 				{
-					// use JQuery capability to modify HTML tags according to tag's id
-					$('#person-result').html(personResult);
-				}, 3000);
-			}
-		});
+					var personResult = "Person id " + person.Id +
+						" name " + person.Name +
+						" Gender " + person.Gender;
+
+						// use JQuery capability to modify HTML tags according to tag's id
+						$('#person-result').html(personResult);
+				}
+			});
+		}
 
     // create Person object instance
 		var newPerson = {
