@@ -9,11 +9,11 @@
 	<p>Insert person ID you want to retrieve</p>
 
 	<!-- text box to retrieve user input with person ID default value -->
-	<input type="text" id="personId" value="1">
+	<input type="text" id="personId"  data-bind-person="id">
 	<!-- button to trigger person fetch procedure -->
 	<button type="button" onclick="PersonService.GetById()">Get Person</button>
 	<br>
-	<div id="person-result">click Get Person to retrieve person's data ...</div>
+	<div id="person-result" data-bind-person="result">click Get Person to retrieve person's data ...</div>
 
 	<!-- this is how we are loading external javascript dependency -->
 	<script src="lib/jquery-1.10.2.js"></script>
