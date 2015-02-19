@@ -11,7 +11,7 @@
 // globalSpace == window
 // Used as a alias, so in case window should be changed from some reason internal
 // implementation remain intact.
-(function(globalSpace)
+(function(globalSpace, $)
 {
 	"use strict";
 
@@ -58,4 +58,5 @@
 
 	console.log("load end person.js");
 
-})(window);// window is a global var that is injected into the closure
+})(window, jQuery);
+// window & JQuery are global vars that are injected into the closure (see function declaration above)
