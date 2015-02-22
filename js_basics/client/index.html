@@ -16,9 +16,13 @@
 	<div id="person-result" data-bind-person="result">click Get Person to retrieve person's data ...</div>
 	<br>
 	<button type="button" onclick="PersonService.GetAll()">Get all Persons</button>
+	<div id="person-list">
+		<!-- the list of persons should be placed dynamically in here -->
+	</div>
 
 	<!-- this is how we are loading external javascript dependency -->
-	<script src="lib/jquery-1.10.2.js"></script>
+	<!--  <script src="lib/jquery-1.10.2.js"></script> -->
+	<script src="lib/jquery-2.0.0.js"></script>
 	<!-- note that you must load js files according to the inter-dependencies between them!-->
 	<script src="ObjectDm.js"></script>
 	<script src="person.js"></script>
