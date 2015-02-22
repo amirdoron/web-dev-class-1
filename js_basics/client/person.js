@@ -33,14 +33,21 @@
 			cache: false,
 			success: function(persons)
 			{
-				console.log("Persons");
-				persons.forEach(function(p)
-				{
-					// the persons data should be entered into the HTML so the user will be able to display
-					console.log("ID: " + p.Id + " Name: " + p.Name + " Gender: " + p.Gender);
-				});
+				displayPersons(persons, $("#person-list"));
 			}
 		})
+	}
+
+	function displayPersons(persons, htmlTag)
+	{
+		persons.forEach(function(p)
+		{
+			$(htmlTag).append("<div>" +
+												"ID " + p.Id +
+												" Name " + p.Name +
+												" Gender " + p.Gender +
+												"</div>");
+		});
 	}
 
 	var newPerson = {
