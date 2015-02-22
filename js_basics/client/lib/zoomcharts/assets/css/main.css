@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Global styles start */
+body {
+    font-family: 'Roboto', Arial, Tahoma;
+    color: #333;
+    font-size: 16px;
+	font-weight:400;
+	background:#fff;
+	line-height:150%;
+}
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+body {padding:24px;}
+
+a, a:after {
+    outline: none;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	text-decoration:none;
+}
+a {
+	text-decoration:underline;
+	color:#09c;
+}
+a:hover {
+	color:#000;
+}
+h1 {
+	line-height:200%;
+	font-size:32px;
+	color:#09c;	
+}
+h2 {
+	line-height:200%;
+	font-size:28px;
+	color:#000;	
+}
+ol {padding-top:16px;}
+ol li {
+	padding:10px 24px 10px 10px;	
+	list-style:decimal;
+	margin-left:24px;
+}
+nav {
+	display:block;
+	padding:7px 0 40px 0;	
+}
+nav a {
+	display:block;	
+}
+#demo {margin-bottom:12px;}
+a.jsfiddle {
+	display:block;
+	font-size:13px;
+	color:#666;	
+	margin-bottom:16px;
+	padding-left:21px;
+	position:relative;
+}
+a.jsfiddle:after {
+	content:"";
+	position:absolute;
+	top:5px;
+	left:0;
+	width:16px;
+	height:16px;
+	background:url(../images/jsfiddle.svg) left top no-repeat;
+	background-size:16px auto;
+	opacity:.4;
+}
+a.jsfiddle:hover {
+	color:#000;	
+}
+a.jsfiddle:hover:after {
+	opacity:1;
+}
+pre {
+	padding:12px;
+	margin:12px;	
+	border:1px solid #f3f3f3;
+}
+pre:hover {
+	border:1px solid #fff;
+	-webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.3);
+}
+
+#tutorials {font-size:0;padding:10px 0;}
+#tutorials a {
+	font-size:15px;
+	display:inline-block;
+	width:24%;
+	padding:94px 0 0 0;
+	background-position:center top;
+	background-repeat:no-repeat;
+	color:#000;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
