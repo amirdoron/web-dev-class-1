@@ -11,12 +11,13 @@ module.exports = function(app)
 	// A Person type that requires 3 parameters during creation
 	// This is a function (not a Person object yet).
 	// You'll need to use new Person(...) for creating a Person instance.
-	function Person(id, name, gender)
+	function Person(id, name, gender, links)
 	{
 		// Person's data members
 		this.Id = id;
 		this.Name = name;
 		this.Gender = gender;
+		this.LinksTo = links;
 
 		// Person's method
 		this.ToString = function ()
@@ -72,7 +73,7 @@ module.exports = function(app)
 		// define person REST API to add a new person into the DB
 		app.post('/person/add', function(req, res)
 		{
-			var newPerson = new Person(req.body.Id, req.body.Name, req.body.Gender);
+			var newPerson = new Person(req.body.Id, req.body.Name, req.body.Gender, req.body.LinksTo);
 			// insert only if not exist
 			var personNotExist = !IsPersonExist(personDB, newPerson);
 			if(personNotExist)

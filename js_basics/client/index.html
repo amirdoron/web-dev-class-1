@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="lib/ducksboard-gridster.js-3140374/dist/jquery.gridster.css"/>
-	<link rel="stylesheet" type="text/css" href="demo.css"/>
 </head>
 
 <body>
@@ -17,21 +15,12 @@
 	<div id="person-result" data-bind-person="result">click Get Person to retrieve person's data ...</div>
 	<br>
 	<button type="button" onclick="PersonService.GetAll()">Get all Persons</button>
-	<div id="person-list">
+	<div id="person-list" style="width:1200px;height:300px">
 		<!-- the list of persons should be placed dynamically in here -->
-	</div>
-
-	<div id="chartContainer" style="width:300px;height:300px">
-
-	</div>
-
-	<div class="gridster">
-		<ul></ul>
 	</div>
 
 	<!-- this is how we are loading external javascript dependency -->
 	<script src="lib/jquery-2.1.1.js"></script>
-	<script src="lib/ducksboard-gridster.js-3140374/dist/jquery.gridster.js"></script>
 	<script src="lib/zoomcharts/lib/zoomcharts.js"></script>
 	<!-- note that you must load js files according to the inter-dependencies between them!-->
 	<script src="ObjectDm.js"></script>

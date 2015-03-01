@@ -33,38 +33,33 @@
 			cache: false,
 			success: function(persons)
 			{
-				displayPersons(persons, $("#person-list"));
+				displayPersons(persons, "person-list");
 			}
 		})
 	}
 
-	function displayPersons(persons, htmlTag)
+	function displayPersons(persons, htmlTagId)
 	{
+		var data = {nodes:[],links:[]};
 		persons.forEach(function(p)
 		{
-			$(htmlTag).append("<div>" +
-												"ID " + p.Id +
-												" Name " + p.Name +
-												" Gender " + p.Gender +
-												"</div>");
+			// fill persons in nodes array
+			data.nodes.push({id: p.Id, "loaded":true, "style": {"label": p.Name}});
+			// note that not all persons have links to others
+			// so do the following only to persons which have ..
+			if(p.LinksTo != null)
+			{
+				// linkage between this persons to others according to person's links to others array
+				p.LinksTo.forEach(function(link)
+				{
+					data.links.push({id: p.Id + "_to_"+link, from: p.Id, to: link});
+				});
+			}
 		});
 
-		var data = {
-			"nodes":[
-				{"id":"n1", "loaded":true, "style":{"label":"Node1"}},
-				{"id":"n2", "loaded":true, "style":{"label":"Node2"}},
-				{"id":"n3", "loaded":true, "style":{"label":"Node3"}}
-			],
-			"links":[
-				{"id":"l1","from":"n1", "to":"n2", "style":{"fillColor":"red", "toDecoration":"arrow"}},
-				{"id":"l2","from":"n2", "to":"n3", "style":{"fillColor":"green", "toDecoration":"arrow"}},
-				{"id":"l3","from":"n3", "to":"n1", "style":{"fillColor":"blue", "toDecoration":"arrow"}}
-			]
-		};
-
 		var t = new NetChart({
-			container: document.getElementById("chartContainer"),
-			height: 350,
+			container: document.getElementById(htmlTagId),
+			height: 600,
 			data:
 			{
 				preloaded: data
@@ -72,34 +67,35 @@
 		});
 	}
 
-	var gridster = $(".gridster > ul").gridster({
-		widget_margins: [5, 5],
-		widget_base_dimensions: [100, 55]
-	}).data('gridster');
-
-	var widgets = [
-		['<li>0</li>', 1, 2],
-		['<li>1</li>', 3, 2],
-		['<li>2</li>', 3, 2],
-		['<li>3</li>', 2, 1],
-		['<li>4</li>', 4, 1],
-		['<li>5</li>', 1, 2],
-		['<li>6</li>', 2, 1],
-		['<li>7</li>', 3, 2],
-		['<li>8</li>', 1, 1],
-		['<li>9</li>', 2, 2],
-		['<li>10</li>', 1, 3]
-	];
-
-	$.each(widgets, function(i, widget){
-		gridster.add_widget.apply(gridster, widget)
-	});
+	//var gridster = $(".gridster > ul").gridster({
+	//	widget_margins: [5, 5],
+	//	widget_base_dimensions: [100, 55]
+	//}).data('gridster');
+	//
+	//var widgets = [
+	//	['<li>0</li>', 1, 2],
+	//	['<li>1</li>', 3, 2],
+	//	['<li>2</li>', 3, 2],
+	//	['<li>3</li>', 2, 1],
+	//	['<li>4</li>', 4, 1],
+	//	['<li>5</li>', 1, 2],
+	//	['<li>6</li>', 2, 1],
+	//	['<li>7</li>', 3, 2],
+	//	['<li>8</li>', 1, 1],
+	//	['<li>9</li>', 2, 2],
+	//	['<li>10</li>', 1, 3]
+	//];
+	//
+	//$.each(widgets, function(i, widget){
+	//	gridster.add_widget.apply(gridster, widget)
+	//});
 
 
 	var newPerson = {
 		Id: 2211,
 		Name: "Stark the king of the north",
-		Gender: "Male"
+		Gender: "Male",
+		LinksTo: [1,2,3]
 	};
 
 	$.ajax({
